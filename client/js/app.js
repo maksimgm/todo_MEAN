@@ -5,5 +5,13 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider,$locati
     when('/todos',{
       templateUrl: './templates/allTodos.html',
       controller: 'TodosController'
-    });
+    }).
+    when('/todos/new',{
+      templateUrl:'./templates/newTodo.html',
+      controller: 'NewTodoController'
+    })
+
+    .otherwise({redirectTo: '/todos'});
+
+  $locationProvider.html5Mode(true);
 }]);
