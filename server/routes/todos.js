@@ -19,21 +19,26 @@ router.post('/', function(req, res) {
   });
 });
 
-// edit a todo
-router.put('/:id',function(req,res){
-  db.Todo.findByIdAndUpdate(req.params.id, req.body, function(error,todo){
+// show a specific todo
+router.get('/:id',function(req,res){
+  db.Todo.findById(req.params.id, function(err,todo){
+    if(err) return res.json({err:err.message});
     res.status(200).send(todo);
   });
 });
 
-// router.get('/:id',function(req,res){
-//   db.findById()
-// });
-
-// router.delete('/:id',function(req,res){
-//   db.findById(req.params.id,function(error,todo){
-//     // res
-//   });
-// });
+// edit a todo
+router.put('/:id',function(req,res){
+  db.Todo.findByIdAndUpdate(req.params.id, req.body, function(err,todo){
+    if(err) return res.json({err:err.message});
+    res.status(200).send(todo);
+  });
+});
+// delete a todo
+router.delete('/:id',function(req,res){
+  db.Todo.findByIdAndRemove(req.params.id,function(err,todo){
+    res.status(200).send(todo);
+  });
+});
 
 module.exports = router;

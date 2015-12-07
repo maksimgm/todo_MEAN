@@ -9,8 +9,11 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider,$locati
     when('/todos/new',{
       templateUrl:'./templates/newTodo.html',
       controller: 'NewTodoController'
+    }).
+    when('/todos/:id/edit',{
+      templateUrl: './templates/editTodo.html',
+      controller: 'EditTodosController'
     })
-
     .otherwise({redirectTo: '/todos'});
 
   $locationProvider.html5Mode(true);

@@ -1,8 +1,10 @@
 <h1>All todos!!</h1>
-
-
   <ul>
-    <li ng-repeat="todo in todos">
-      {{todo.task}}
+    <li ng-repeat="todo in todos track by $index">
+      <!-- show a todo -->
+      <a ng-href="">{{todo.task}}</a>
+      <button ng-href="/todos/{{todo._id}}/edit">Edit</button>
+      <button ng-click="deleteATodo(todo)">DELETE THIS TODO</button>
     </li>
   </ul>
+  <a href="/todos/new">Create Todo</a>
